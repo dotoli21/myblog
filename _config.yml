@@ -1,0 +1,21 @@
+# Site settings
+title: DEVLOG
+email: unchai@protonmail.com
+description: 
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://blog.tolinezip.com" # the base hostname & protocol for your site
+github_username: unchai
+
+# Build settings
+#markdown: redcarpet
+#redcarpet:
+#  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+highlighter: rouge
+include:
+  - .nojekyll
+exclude:
+  - "bower_components"
+  - "bower.json"
+  - "node_modules"
+  - "package.json"
+  - "Gruntfile.cofee"

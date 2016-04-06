@@ -1,0 +1,86 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Our variables
+$base-font-family: AppleGothic, Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #2a7ae2;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+// Width of the content area
+$content-width:    800px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+// Using media queries with like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+@media (min-width: 1200px) {
+	.container {
+		width: 970px;
+	}
+}
+
+.blog-header {
+	height: 65px;
+	margin-bottom: 30px;
+	border-bottom: 2px solid #428bca;
+
+	a:hover,
+	a:visited {
+		text-decoration: none;
+		color: #337ab7; 
+	}
+}
+.blog-title {
+	margin-top: 15px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #337ab7; 
+	float: left;
+}
+.blog-nav {
+	margin: 25px 10px 0 0;
+	float: right;
+}
+
+.blog-footer {
+	margin: 20px 0 20px 0;
+	padding: 5px 0 0 0;
+	border-top: 2px solid #428bca;
+	.copyright {
+		color: #999999;
+		font-size: 10pt;
+	}
+}
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base",
+        "layout",
+        "syntax-highlighting",
+		"markdown"
+;

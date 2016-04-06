@@ -1,0 +1,115 @@
+---
+layout: post
+title:  ".vimrc로 vim 설정하기"
+date:   2015-01-16 12:46:00
+categories: tools
+---
+vim은 사용자 홈디렉토리의 `.vimrc` 파일을 설정파일로 사용한다. 설정파일의 모든 내용을 다루기엔 양이 너무 방대하기 때문에, 주로 많이 사용하는 몇가지 설정에 대해서만 정리해보겠다.
+
+#### 들여쓰기 설정
+| 명령어 | 설명 |
+| --- | --- |
+| `set autoindent` | 이전 라인에서 들여쓰기를 했을경우 개행 시 다음 라인에서도 자동으로 적용된다. |
+| `set smartindent` | autoindent와 비슷하지만, 몇몇 C언어의 문법에 대해 좀 더 똑똑하게 들여쓰기를 해 준다. |
+| `set cindent` | 좀 더 똑똑하게 C언어의 문법에 맞게 들여쓰기를 해 준다. |
+| `set tabstop=n` | 기본 탭의 크기를 설정한다. 보통 2,4,8 중 하나를 사용한다. |
+| `set shiftwidth=n` | 들여쓰기 간격을 설정한다. 보통은 tabstop과 동일한 값을 사용된다. |
+
+GUI환경 등에서 OS의 Clipboard에서 vim으로 붙여넣기를 할 경우 autoindent 설정으로 인해 이상하게 붙여넣어지는 현상이 발생하는데, 이 땐 `set paste` 명령어로 붙여넣기 모드로 바꾼 후 Insert Mode에서 붙여넣으면 문제없다. 해제는 `set nopaste`로 할 수 있다.
+
+#### 화면 설정
+| 명령어 | 설명 |
+| --- | --- |
+| `set visualbell` | 경고음을 화면의 번쩍거림으로 대체해준다. |
+| `set number` | 줄번호를 표시한다. |
+| `set ruler` | vim의 좌측하단영역에 현재 커서의 위치정보를 보여준다. |
+| `set title` | 현재 작업중인 파일명을 터미널 윈도우 타이틀 영역에 표시한다. |
+| `set wrap` | 텍스트가 화면의 가로폭보다 길 경우, 넘어서는 영역부터는 다음줄에 보여준다. |
+| `set linebreak` | 텍스트가 화면의 가로폭보다 길 경우, 넘어서는 영역에서 개행해서 보여준다. `set wrap` 일 경우에만 유효. |
+| `set cursorline` | 커서가 있는 라인을 하이라이팅한다. |
+| `set showmatch` | Bracket 문자가 입력될 경우 자동으로 커서가 대응되는 Bracket 문자로 이동하여 잠시동안 머문다. |
+| `set backgroud=xxx` | 배경색을 지정한다. `dark` 와 `light` 중 하나를 설정할 수 있다. |
+| `set guifont=xxx` | GUI환경의 vim에서 사용될 폰트를 설정한다. |
+
+#### 검색 설정
+| 명령어 | 설명 |
+| --- | --- |
+| `set nowrapscan` | 검색 시 문서 마지막에서 처음으로 돌아가지 않는다. |
+| `set hlsearch` | 검색어를 하이라이팅 처리한다. |
+| `set ignorecase` | 검색 시 대소문자 구분하지 않는다. |
+| `set incsearch` | 검색 명령어 입력 후 검색어를 입력할 때 마다 점진적으로 검색된다. |
+
+#### 편집 설정
+| 명령어 | 설명 |
+| --- | --- |
+| `set backspace=xxx` | 백스페이스의 동작을 설정한다. `indent`, `eol`, `start` 등의 값을 설정할 수 있다. |
+| `set history=n` | `:` 모드 명령어의 히스토리 저장개수를 n으로 설정한다. |
+| `set fileencodings=xxx` | vim이 파일을 읽어들일때 사용할 encoding을 설정한다. 콤마로 구분해서 여러개를 지정할 수 있으며, 순서대로 시도한다. |
+| `set fileencoding=xxx` | 버퍼에 있는 파일의 인코딩을 설정한다. |
+| `set backup` | 파일을 덮어쓸 경우 백업한다. |
+
+각 설정에 대한 상세 설명은 `help 명령어` 를 입력하면 확인할 수 있다.
+
+아래는 현재 필자가 사용중인 vim의 설정파일이다.
+
+```vim
+"=== INDENT ===
+set autoindent
+set cindent
+set smartindent
+set tabstop=4
+set shiftwidth=4
+
+"=== VIEW ===
+set visualbell
+set number
+set ruler
+set title
+set wrap
+set cursorline
+set linebreak
+set showmatch
+set background=dark
+set guifont=NanumGothicCoding:h12:cHANGEUL
+
+"=== SEARCH ===
+set nowrapscan
+set hlsearch
+set ignorecase
+set incsearch
+
+"=== EDIT ===
+set backspace=eol,start,indent
+set history=1000
+set fencs=ucs-bom,utf-8,euc-kr,latin1
+set fileencoding=utf-8
+set nobackup
+
+"<=== VUNDLE config Start ===>
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+let path='~/.vim/bundle'
+call vundle#begin(path)
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'L9'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim'}
+Plugin 'The-NERD-Tree'
+Plugin 'Shougo/unite.vim'
+Plugin 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'tomasr/molokai'
+call vundle#end()
+filetype plugin indent on
+"<=== VUNDLE config End ===>
+
+"=== VIM-AIRLINE ===
+set laststatus=2
+
+"=== COLOR SCHEME ===
+syntax on
+syntax enable
+colorscheme molokai
+```
