@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux에서 rsyncd 설정하기"
-date:   2014-12-04 13:50:00
+date:   2014-12-04 13:50:00 +0900
 categories: server
 ---
 rsync는 delta encoding을 사용하여 사용하여 데이터전송량을 최소화하면서 원격지의 파일과 디렉토리를 동기화해 주는 프로그램이다.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "'vundle'로 vim plugin 관리하기" 
-date:   2015-01-03 17:26:00
+date:   2015-01-03 17:26:00 +0900
 categories: tools
 ---
 vi는 visual editor의 약자로 Unix terminal환경을 접해본 사람이라면 한 번쯤은 써 보거나 들어본 경험이 있을것이다.

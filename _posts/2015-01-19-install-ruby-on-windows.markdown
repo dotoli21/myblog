@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Windows에 Ruby 설치하기"
-date:   2015-01-19 13:36:00
+date:   2015-01-19 13:36:00 +0900
 categories: ruby
 ---
 윈도우즈에 Ruby를 설치하는 것은, 사용자 PC 환경에 따라 쉬울 수도 있고 어려워질 수도 있다. 여러분의 PC 환경이 가급적 전자이길 바란다.
