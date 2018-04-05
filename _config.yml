@@ -5,12 +5,22 @@ description:
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://blog.tolinezip.com" # the base hostname & protocol for your site
 github_username: unchai
+twitter_username: unchai_dev
 
 # Build settings
-#markdown: redcarpet
-#redcarpet:
-#  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+markdown: kramdown
 highlighter: rouge
+plugins:
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+
 include:
   - .nojekyll
 exclude:
