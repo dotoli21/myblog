@@ -5,19 +5,12 @@
 		<h1 class="post-title">{{ page.title }}</h1>
 		<p class="post-meta">{{ page.date | date: "%Y. %m. %d" }}{% if page.author %} ??{{ page.author }}{% endif %}{% if page.meta %} ??{{ page.meta }}{% endif %}</p>
 	</header>
-	
+
+	{% include adsense.html %}
+
 	<article class="markdown-body">
 	{{ content }}
 	</article>
-	<div class="fb-comments" data-href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+
+	{% include comment.html %}
 </div>
-<div id="fb-root"></div>
-<script type="text/javascript">
-(function(d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) return;
-	js = d.createElement(s); js.id = id;
-	js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=644671708947993&version=v2.0";
-	fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
