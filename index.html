@@ -1,7 +1,8 @@
 ---
 layout: default
 ---
+
 {% assign page = site.posts.first %}
 <script>
-	window.location.replace('{{ page.root_url }}{{ page.url }}');
+  window.location.href = "{{ page.root_url }}{{ page.url }}";
 </script>

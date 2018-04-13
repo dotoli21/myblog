@@ -1,69 +1,47 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width initial-scale=1">
-	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-	<meta name="naver-site-verification" content="c85f5b1237dea80d9ccdf9b814b927bb1f6ff272">
-	<meta property="og:site_name" content="#DEVLOG">
-	{% if page.title %}
-	<meta property="og:type" content="article">
-	<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-	<meta property="og:title" content="{{ page.title | string_html | string_newlines | truncate: 160 }}">
-	<meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-	{% endif %}
 
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+{% include head.html %}
 
-	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
-
-	<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
-
-	<link rel="StyleSheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-	<link rel="StyleSheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" />
-	<link rel="StyleSheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" />
-
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-389018-4', 'auto');
-		ga('send', 'pageview');
-	</script>
-
-	<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-</head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="blog-header">
-			<div class="blog-title"><a href="/">&num;{{ site.title }}</a></div>
-			<nav class="blog-nav">
-				<div class="trigger">
-					{% for page in site.pages %}
-						{% if page.title %}
-						<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-						{% endif %}
-					{% endfor %}
-				</div>
-			</nav>
-		</div>
-	</div>
-	<div class="row">
-		{{ content }}
-	</div>
-	<div class="row">
-		<div class="blog-footer">
-			<span class="copyright">Copyright&copy;2015 unchai All rights reserved.</span>
-		</div>
-	</div>
+
+{% include sidebar.html %}
+
+<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+     content to avoid any CSS collisions with our real content. -->
+<div class="wrap">
+  <div class="masthead">
+    <div class="container">
+      <h3 class="masthead-title">
+        <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
+        <small>{{ site.tagline }}</small>
+      </h3>
+    </div>
+  </div>
+
+  <div class="container content">
+    {{ content }}
+  </div>
 </div>
+
+<label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+<script>
+  (function (document) {
+    var toggle = document.querySelector(".sidebar-toggle");
+    var sidebar = document.querySelector("#sidebar");
+    var checkbox = document.querySelector("#sidebar-checkbox");
+
+    document.addEventListener("click", function (e) {
+      var target = e.target;
+
+      if (!checkbox.checked ||
+        sidebar.contains(target) ||
+        (target === checkbox || target === toggle)) return;
+
+      checkbox.checked = false;
+    }, false);
+  })(document);
+</script>
 </body>
 </html>

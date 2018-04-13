@@ -17,7 +17,7 @@ Tensorflow 또는 Keras 등의 도구는 CPU만으로도 실행이 가능하지�
 
 PC엔 NVIDIA Geforce GTX 960이 설치되어있었다. 그럼 당연히 GPU를 써봐야지! 하고 `tensorflow-gpu`를 설치했다.
 
-```
+```sh
 $ pip3 install tensorflow-gpu
 ```
 

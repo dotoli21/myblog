@@ -1,19 +1,20 @@
 # Site settings
 title: DEVLOG
-email: unchai@protonmail.com
-description: 
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://blog.tolinezip.com" # the base hostname & protocol for your site
-github_username: unchai
-twitter_username: unchai_dev
+tagline: "The engineer's log"
+description: "여기에 뭐라고 써야하나..."
+baseurl: ""
+url: "http://blog.tolinezip.com"
+
+# About/contact
+author:
+  name: unchai
+  url: https://twitter.com/unchai_dev
+  email: unchai@protonmail.com
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
-plugins:
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
+
 kramdown:
   auto_ids: true
   footnote_nr: 1
@@ -21,11 +22,7 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
-include:
-  - .nojekyll
-exclude:
-  - "bower_components"
-  - "bower.json"
-  - "node_modules"
-  - "package.json"
-  - "Gruntfile.cofee"
+plugins:
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
