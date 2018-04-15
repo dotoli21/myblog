@@ -359,6 +359,10 @@ a.sidebar-nav-item:focus {
   color: inherit;
 }
 
+.center-image {
+  margin: 0 auto;
+}
+
 
 /*
  * Pagination

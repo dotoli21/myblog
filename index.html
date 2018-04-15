@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: none
 ---
-
 {% assign page = site.posts.first %}
 <script>
-  window.location.href = "{{ page.root_url }}{{ page.url }}";
+  if (/^127.0.0.1$/.test(location.hostname)) {
+    location.href = "{{ page.url }}";
+  } else {
+    location.href = "https://" + location.host + "{{ page.url }}";
+  }
 </script>
